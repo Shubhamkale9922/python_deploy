@@ -6,12 +6,15 @@ phases:
       python: 3.9
     commands:
       - echo Installing dependencies...
-      - pip install -r requirements.txt -t .
+      - pip install -r requirements.txt -t package
 
   build:
     commands:
-      - echo Creating ZIP file...
-      - zip -r function.zip .
+      - echo Creating Lambda deployment package...
+      - cd package
+      - zip -r ../function.zip .
+      - cd ..
+      - zip -g function.zip lambda_function.py
 
 artifacts:
   files:
