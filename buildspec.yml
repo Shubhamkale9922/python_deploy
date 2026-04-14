@@ -5,14 +5,11 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - pip install -r requirements.txt -t package || true
+      - pip install -r requirements.txt -t .
 
   build:
     commands:
-      - cp lambda_function.py package/
-      - cd package
-      - zip -r ../function.zip .
-      - cd ..
+      - zip -r function.zip .
 
 artifacts:
   files:
